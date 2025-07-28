@@ -1,0 +1,28 @@
+{
+  "name": "vite-plugin-collections",
+  "version": "1.0.0-beta.0",
+  "description": "A vite plugin for working with directories of markdown",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "test": "vitest"
+  },
+  "keywords": [
+    "vite",
+    "markdown",
+    "unified",
+    "remark",
+    "rehype"
+  ],
+  "author": "Josh Nussbaum (http://github.com/joshnuss)",
+  "license": "MIT",
+  "packageManager": "pnpm@10.13.1",
+  "devDependencies": {
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}
