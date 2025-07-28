@@ -21,8 +21,21 @@
   "license": "MIT",
   "packageManager": "pnpm@10.13.1",
   "devDependencies": {
+    "@types/hast": "^3.0.4",
+    "@types/mdast": "^4.0.4",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
+    "vfile": "^6.0.3",
     "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "rehype-stringify": "^10.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-html": "^16.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "remark-stringify": "^11.0.0",
+    "unified": "^11.0.5",
+    "vfile-matter": "^5.0.1"
   }
 }
