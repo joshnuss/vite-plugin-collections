@@ -14,3 +14,9 @@ export async function file_exists(path: string): Promise<boolean> {
     return false
   }
 }
+
+export async function delete_file(path: string) {
+  if (await file_exists(path)) {
+    await fs.unlink(path)
+  }
+}
