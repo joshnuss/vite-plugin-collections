@@ -1,5 +1,5 @@
 import type { Type } from '../src/index'
-import { write_definitions } from '../src/definitions'
+import { write_definitions } from '../src/typing'
 import { delete_file } from '../src/utils'
 import fs from 'fs/promises'
 
