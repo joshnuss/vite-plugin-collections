@@ -1,4 +1,4 @@
-import { capitalize } from '../src/utils'
+import { capitalize, file_exists } from '../src/utils'
 
 describe('capitalize', () => {
   test('ignores empty string', () => {
@@ -17,5 +17,17 @@ describe('capitalize', () => {
     const result = capitalize('x')
 
     expect(result).toEqual('X')
+  })
+})
+
+describe('file_exists', () => {
+  test('returns true, when file exists', async () => {
+    const exists = await file_exists('test/utils.test.ts')
+    expect(exists).toEqual(true)
+  })
+
+  test('returns false, when file doesnt exists', async () => {
+    const exists = await file_exists('test/fugazi.ts')
+    expect(exists).toEqual(false)
   })
 })
