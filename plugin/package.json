@@ -8,7 +8,8 @@
     "check": "tsc --noEmit",
     "build": "tsc",
     "dev": "tsx src/index.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [
     "vite",
@@ -24,6 +25,7 @@
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
     "@types/node": "^24.1.0",
+    "@vitest/coverage-v8": "^3.2.4",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "vfile": "^6.0.3",
