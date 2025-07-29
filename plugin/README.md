@@ -62,6 +62,16 @@ import { get } from '#posts'
 const post = await get(slug)
 ```
 
+## Types
+
+The plugin will generate a file `collections.d.ts`. Add it to your `tsconfig.json`:
+
+```json
+"files": [
+  "collections.d.ts"
+]
+```
+
 ## License
 
 MIT
