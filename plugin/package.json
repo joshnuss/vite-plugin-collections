@@ -2,7 +2,6 @@
   "name": "vite-plugin-collections",
   "version": "1.0.0-beta.0",
   "description": "A vite plugin for working with directories of markdown",
-  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "lint": "eslint .",
@@ -11,7 +10,8 @@
     "build": "tsc",
     "dev": "tsx src/index.ts",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "pkg:lint": "publint"
   },
   "keywords": [
     "vite",
@@ -32,6 +32,7 @@
     "@vitest/coverage-v8": "^3.2.4",
     "eslint": "^9.32.0",
     "prettier": "^3.6.2",
+    "publint": "^0.3.12",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.38.0",
@@ -52,5 +53,13 @@
     "vfile-matter": "^5.0.1",
     "vite": "^7.0.6",
     "zod": "^4.0.10"
-  }
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "package.json",
+    "README.md",
+    "dist/*"
+  ]
 }
