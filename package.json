@@ -26,6 +26,12 @@
     "dev": "pnpm -r --parallel --filter='./packages/*' run dev"
   },
   "devDependencies": {
+    
   },
-  "packageManager": "pnpm@10.13.1"
+  "packageManager": "pnpm@10.13.1",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
 }
