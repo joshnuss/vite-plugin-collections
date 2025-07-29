@@ -3,7 +3,7 @@
   let { posts } = $derived(data)
 </script>
 
-{#each posts as post}
+{#each posts as post (post.id)}
   <article>
     <h2>{post.title}</h2>
     <a href="/posts/{post.id}">View post</a>
