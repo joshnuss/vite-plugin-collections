@@ -22,7 +22,7 @@
     "check": "pnpm -r --parallel run check",
     "test": "pnpm -r --parallel run test",
     "docs": "pnpm --filter=docs run dev",
-    "build": "pnpm -r --filter='./packages/*' run build",
+    "build": "pnpm -r --filter='./plugin' run build",
     "dev": "pnpm -r --parallel --filter='./packages/*' run dev"
   },
   "devDependencies": {
