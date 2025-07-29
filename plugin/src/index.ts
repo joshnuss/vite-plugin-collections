@@ -13,9 +13,3 @@ export type Options<Schema> = {
     order?: 'ascending' | 'descending'
   }
 }
-
-export type Type = {
-  name: string
-  type: string
-  optional: boolean
-}

@@ -1,9 +1,35 @@
-import type { Options, Type } from './index'
 import { name } from '../package.json'
 import fs from 'fs/promises'
 import { camelCase } from 'scule'
-import { capitalize } from './utils'
 import pluralize from 'pluralize'
+import { capitalize } from './utils'
+import type { ZodType, ZodObject } from 'zod'
+
+export type Type = {
+  name: string
+  type: string
+  optional: boolean
+}
+
+export async function extract_types<Schema extends ZodObject>(fields?: Schema): Promise<Type[]> {
+  const typings: Type[] = [
+    { name: 'id', type: 'string', optional: false },
+    { name: 'body', type: 'string', optional: false },
+  ]
+
+  if (fields) {
+    Object.entries(fields.shape).forEach(([key, value]) => {
+      if (!value) return
+
+      const optional = value.def.type == 'optional'
+      const type = type_string(value.def)
+
+      typings.push({ name: key, type, optional })
+    })
+  }
+
+  return typings
+}
 
 export async function write_definitions<Schema>(path: string, typings: Type[], base: string) {
   const class_name = pluralize.singular(capitalize(camelCase(base)))
@@ -27,4 +53,24 @@ export async function write_definitions<Schema>(path: string, typings: Type[], b
   code += `}`
 
   await fs.appendFile(path, code)
+}
+
+function type_string(def: ZodType): string {
+  const optional = def.type == 'optional'
+
+  // @ts-expect-error later
+  const type = optional ? def.innerType.def.type : def.type
+
+  if (type == 'array') {
+    // @ts-expect-error later
+    const element = def.element.def.type
+    return `${element}[]`
+  }
+
+  if (type == 'enum') {
+    // @ts-expect-error later
+    return Object.values(def.entries).map(val => JSON.stringify(val)).join(' | ')
+  }
+
+  return type
 }

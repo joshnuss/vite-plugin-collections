@@ -1,10 +1,9 @@
-import type { Type } from '../src/index'
-import { write_definitions } from '../src/typing'
+import { extract_types, write_definitions, type Type } from '../src/typing'
 import { delete_file } from '../src/utils'
 import fs from 'fs/promises'
+import * as z from 'zod'
 
-
-test('write_definitions', async () => {
+test('write_definitions writes file', async () => {
   const path = 'test/fixtures/collections.d.ts'
   const types: Type[] = [
     { name: 'title', type: 'string', optional: false },
@@ -29,4 +28,67 @@ declare module "#posts" {
   export function list(): Promise<Post[]>
   export function get(id: string): Promise<Post>
 }`)
+})
+
+describe('extract_types', () => {
+  test('returns types, when types are passed', async () => {
+    const schema = z.object({
+      title: z.string(),
+      summary: z.string().optional(),
+      tags: z.array(z.string()),
+      author: z.enum(["josh", "jonathan"])
+    })
+
+    const types = await extract_types(schema)
+
+    expect(types).toEqual([
+      {
+        name: "id",
+        optional: false,
+        type: "string",
+      },
+      {
+        name: "body",
+        optional: false,
+        type: "string",
+      },
+      {
+        name: "title",
+        optional: false,
+        type: "string",
+      },
+      {
+        name: "summary",
+        optional: true,
+        type: "string",
+      },
+      {
+        name: "tags",
+        optional: false,
+        type: "string[]",
+      },
+      {
+        name: "author",
+        optional: false,
+        type: '"josh" | "jonathan"',
+      },
+    ])
+
+  })
+  test('returns default types, when none are passed', async () => {
+    const types = await extract_types()
+
+    expect(types).toEqual([
+      {
+        name: "id",
+        optional: false,
+        type: "string",
+      },
+      {
+        name: "body",
+        optional: false,
+        type: "string",
+      },
+    ])
+  })
 })
