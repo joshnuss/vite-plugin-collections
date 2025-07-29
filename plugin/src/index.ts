@@ -20,7 +20,7 @@ export type Options = {
   }
 }
 
-const definitions_path = 'collection.d.ts'
+const definitions_path = 'collections.d.ts'
 
 export default function collection(options: Options): Plugin {
   const root_path = path.join('src', options.base)
