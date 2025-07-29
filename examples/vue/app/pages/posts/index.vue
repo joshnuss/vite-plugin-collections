@@ -5,8 +5,8 @@
 </script>
 
 <template>
-  <article v-for="post in posts" :key="id">
-    <h2>{{ post.title }}</h2> {{ post.id }}
+  <article v-for="post in posts" :key="post.id">
+    <h2>{{ post.title }}</h2>
     <NuxtLink :to="{ name: 'posts-id', params: { id: post.id } }">View Post</NuxtLink>
   </article>
 
