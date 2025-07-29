@@ -11,7 +11,7 @@ test('write_definitions writes file', async () => {
   ]
 
   await delete_file(path)
-  await write_definitions(path, types, "posts")
+  await write_definitions(path, "posts", types)
 
   const data = await fs.readFile(path, 'utf-8')
 
