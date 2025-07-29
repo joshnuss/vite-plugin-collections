@@ -2,7 +2,7 @@ import { name } from '../package.json'
 import fs from 'fs/promises'
 import { camelCase } from 'scule'
 import pluralize from 'pluralize'
-import { capitalize } from './utils'
+import { capitalize, delete_file } from './utils'
 import type { ZodType, ZodObject } from 'zod'
 
 export type Type = {
@@ -75,4 +75,13 @@ function type_string(def: ZodType): string {
   }
 
   return type
+}
+
+let first_time = false
+
+export async function reset_types(path: string) {
+  if (!first_time) {
+    await delete_file(path)
+    first_time = true
+  }
 }

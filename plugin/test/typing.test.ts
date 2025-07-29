@@ -1,5 +1,5 @@
-import { extract_types, write_definitions, type Type } from '../src/typing'
-import { delete_file } from '../src/utils'
+import { extract_types, write_definitions, reset_types, type Type } from '../src/typing'
+import { file_exists, delete_file } from '../src/utils'
 import fs from 'fs/promises'
 import * as z from 'zod'
 
@@ -90,5 +90,24 @@ describe('extract_types', () => {
         type: "string",
       },
     ])
+  })
+})
+
+describe('reset_types', () => {
+  const path = 'test/fixtures/collections.d.ts'
+
+  test('resets when first time', async () => {
+    await fs.appendFile(path, 'test')
+    await reset_types(path)
+
+    expect(await file_exists(path)).toEqual(false)
+  })
+
+  test('does nothing when not first time', async () => {
+    await reset_types(path)
+    await fs.appendFile(path, 'test')
+    await reset_types(path)
+
+    expect(await file_exists(path)).toEqual(true)
   })
 })
