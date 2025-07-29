@@ -42,7 +42,9 @@ export default defineConfig({
 })
 ```
 
-This will add an import alias `#posts`, which can be used to load one or more files.
+Note: This will add an import alias `#posts`, which can be used to load one or more files.
+
+## Loading files
 
 To load a **list** of markdown files:
 
