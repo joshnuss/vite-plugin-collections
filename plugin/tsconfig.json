@@ -11,5 +11,5 @@
     "outDir": "dist",
     "types": ["vitest/globals"]
   },
-  "exclude": ["vitest.config.*", "test/**"]
+  "exclude": ["vitest.config.*", "test/**", "dist/**"]
 }
