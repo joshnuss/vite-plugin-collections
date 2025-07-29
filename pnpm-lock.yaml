@@ -80,6 +80,9 @@ importers:
       vite-plugin-collections:
         specifier: workspace:*
         version: link:../../plugin
+      zod:
+        specifier: ^4.0.10
+        version: 4.0.10
 
   plugin:
     dependencies:
