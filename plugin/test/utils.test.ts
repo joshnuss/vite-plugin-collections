@@ -47,6 +47,8 @@ describe('delete_file', () => {
   test('does nothing, when file doesnt exists', async () => {
     const path = 'test/fixtures/fugazi.txt'
 
-    expect(delete_file(path)).toHaveResolved
+    await expect(async () => {
+      await delete_file(path)
+    }).not.toThrowError()
   })
 })

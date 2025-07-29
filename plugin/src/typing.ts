@@ -14,7 +14,7 @@ export type Type = {
 export async function extract_types<Schema extends ZodObject>(fields?: Schema): Promise<Type[]> {
   const typings: Type[] = [
     { name: 'id', type: 'string', optional: false },
-    { name: 'body', type: 'string', optional: false },
+    { name: 'body', type: 'string', optional: false }
   ]
 
   if (fields) {
@@ -31,7 +31,7 @@ export async function extract_types<Schema extends ZodObject>(fields?: Schema): 
   return typings
 }
 
-export async function write_definitions<Schema>(path: string, typings: Type[], base: string) {
+export async function write_definitions(path: string, typings: Type[], base: string) {
   const class_name = pluralize.singular(capitalize(camelCase(base)))
   let code = ''
 
@@ -42,7 +42,7 @@ export async function write_definitions<Schema>(path: string, typings: Type[], b
   code += `declare module "#${base}" {\n`
 
   code += `  export type ${class_name} = {\n`
-  typings.forEach(type => {
+  typings.forEach((type) => {
     code += `    ${type.name}${type.optional ? '?' : ''}: ${type.type}\n`
   })
   code += `  }\n`
@@ -69,7 +69,9 @@ function type_string(def: ZodType): string {
 
   if (type == 'enum') {
     // @ts-expect-error later
-    return Object.values(def.entries).map(val => JSON.stringify(val)).join(' | ')
+    return Object.values(def.entries)
+      .map((val) => JSON.stringify(val))
+      .join(' | ')
   }
 
   return type

@@ -19,8 +19,8 @@
   "scripts": {
     "format": "prettier --write --cache .",
     "lint": "eslint --cache .",
-    "typecheck": "pnpm -r --parallel run check",
-    "test": "pnpm test",
+    "check": "pnpm -r --parallel run check",
+    "test": "pnpm -r --parallel run test",
     "docs": "pnpm --filter=docs run dev",
     "build": "pnpm -r --filter='./packages/*' run build",
     "dev": "pnpm -r --parallel --filter='./packages/*' run dev"

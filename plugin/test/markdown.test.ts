@@ -26,8 +26,8 @@ describe('parse_markdown', () => {
     const plugin = () => {
       return (ast: MdastRoot) => {
         // overwrite <h1>'s inner value
-        // @ts-expect-error
-        const root = ast.children[0].children[0].value = 'Updated'
+        // @ts-expect-error ignore
+        ast.children[0].children[0].value = 'Updated'
         return ast
       }
     }
@@ -41,7 +41,7 @@ describe('parse_markdown', () => {
     const plugin = () => {
       return (ast: HastRoot) => {
         // overwrite <h1>'s inner value
-        // @ts-expect-error
+        // @ts-expect-error ignore
         ast.children[0].children[0].value = 'Updated'
         return ast
       }
