@@ -62,7 +62,7 @@ function type_string(def: ZodType): string {
 
   if (type == 'array') {
     // @ts-expect-error later
-    const element = def.element.def.type
+    const element = optional ? def.innerType.def.element.def.type : def.element.def.type
     return `${element}[]`
   }
 

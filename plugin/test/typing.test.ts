@@ -36,6 +36,7 @@ describe('extract_types', () => {
       title: z.string(),
       summary: z.string().optional(),
       tags: z.array(z.string()),
+      keywords: z.array(z.string()).optional(),
       author: z.enum(["josh", "jonathan"])
     })
 
@@ -65,6 +66,11 @@ describe('extract_types', () => {
       {
         name: "tags",
         optional: false,
+        type: "string[]",
+      },
+      {
+        name: "keywords",
+        optional: true,
         type: "string[]",
       },
       {
