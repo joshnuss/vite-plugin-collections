@@ -13,7 +13,7 @@ export type Type = {
 export async function extract_types<Schema extends ZodObject>(fields?: Schema): Promise<Type[]> {
   const typings: Type[] = [
     { name: 'id', type: 'string', optional: false },
-    { name: 'body', type: 'string', optional: false }
+    { name: 'html', type: 'string', optional: false }
   ]
 
   if (fields) {

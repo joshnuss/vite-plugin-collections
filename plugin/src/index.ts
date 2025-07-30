@@ -90,7 +90,7 @@ export default function collection(options: Options): Plugin {
       return {
         code: `
           export const id = "${path.basename(file, '.md')}"
-          export const body = \`${vfile.value}\`
+          export const html = \`${vfile.value}\`
           ${constants.join('\n')}
         `
       }

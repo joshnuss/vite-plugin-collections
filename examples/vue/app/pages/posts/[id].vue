@@ -8,7 +8,7 @@
 <template>
   <h1>{{ post.title }}</h1>
 
-  <div v-html="post.body"></div>
+  <div v-html="post.html"></div>
 
   <pre>{{ JSON.stringify(post, null, 2) }}</pre>
 </template>

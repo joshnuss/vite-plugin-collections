@@ -7,6 +7,6 @@
 
 <h1>{post.title}</h1>
 
-{@html post.body}
+{@html post.html}
 
 <pre>{JSON.stringify(post, null, 2)}</pre>

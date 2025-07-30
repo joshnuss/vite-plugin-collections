@@ -48,7 +48,7 @@ describe('extract_types', () => {
         type: "string",
       },
       {
-        name: "body",
+        name: "html",
         optional: false,
         type: "string",
       },
@@ -85,7 +85,7 @@ describe('extract_types', () => {
         type: "string",
       },
       {
-        name: "body",
+        name: "html",
         optional: false,
         type: "string",
       },

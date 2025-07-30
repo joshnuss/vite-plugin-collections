@@ -5,7 +5,7 @@
 declare module "#posts" {
   export type Post = {
     id: string
-    body: string
+    html: string
     title: string
     summary?: string
   }
