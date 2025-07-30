@@ -26,7 +26,7 @@ export default defineConfig({
       // corresponds to folder src/posts
       base: 'posts',
 
-      // collection matches files src/posts/*.md
+      // matches src/posts/*.md
       pattern: '*.md',
 
       // front matter fields use a Zod schema
@@ -36,17 +36,18 @@ export default defineConfig({
         summary: z.string().optional(),
         date: z.iso.date(),
         tags: z.array(z.string()).optional(),
-      }),
+      })
     })
   ]
 })
 ```
 
-Note: This will add an import alias `#posts`, which can be used to load one or more files.
+> [!NOTE]
+> This will add an import alias `#posts`, use that to access the markdown files.
 
 ## Loading files
 
-To load a **list** of markdown files:
+To load the **list** of markdown files:
 
 ```ts
 import { list } from '#posts'
@@ -64,7 +65,9 @@ const post = await get(slug)
 
 ## Types
 
-The plugin will generate a file `collections.d.ts`. Add it to your `tsconfig.json`:
+Types definitions are generated in `collections.d.ts`.
+
+Add it to your `tsconfig.json`:
 
 ```json
 "files": [
