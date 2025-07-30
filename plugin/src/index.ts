@@ -22,7 +22,7 @@ export type Options = {
 const definitions_path = 'collections.d.ts'
 
 export default function collection(options: Options): Plugin {
-  const root_path = path.join('src', options.base)
+  const root_path = path.join('/src', options.base)
   const pattern = '*.md'
 
   return {
@@ -33,7 +33,7 @@ export default function collection(options: Options): Plugin {
       return {
         resolve: {
           alias: {
-            [`#${options.base}`]: path.resolve(`./${root_path}`)
+            [`#${options.base}`]: path.resolve(root_path)
           }
         }
       }
@@ -49,11 +49,11 @@ export default function collection(options: Options): Plugin {
       if (id.endsWith(root_path)) {
         return `
           export function get(id) {
-            return import(\`./${options.base}/\${id}.md\`)
+            return import(\`${root_path}/\${id}.md\`)
           }
 
           export async function list() {
-            const files = import.meta.glob('./${options.base}/${pattern}')
+            const files = import.meta.glob('./${root_path}/${pattern}')
             const records = await Promise.all(
               Object
                 .values(files)
