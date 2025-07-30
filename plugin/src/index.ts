@@ -8,7 +8,6 @@ import type { ZodObject } from 'zod'
 
 export type Options = {
   base: string
-  pattern?: string
   fields?: ZodObject
   plugins?: {
     remark?: PluggableList
@@ -24,7 +23,7 @@ const definitions_path = 'collections.d.ts'
 
 export default function collection(options: Options): Plugin {
   const root_path = path.join('src', options.base)
-  const pattern = options.pattern || '*.md'
+  const pattern = '*.md'
 
   return {
     name: 'vite-plugin-collections',

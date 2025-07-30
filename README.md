@@ -22,12 +22,10 @@ import * as z from 'zod'
 
 export default defineConfig({
   plugins: [
+    // matches src/posts/*.md
     collection({
-      // corresponds to folder src/posts
+      // use folder src/posts
       base: 'posts',
-
-      // matches src/posts/*.md
-      pattern: '*.md',
 
       // front matter fields use a Zod schema
       fields: z.object({
