@@ -1,6 +1,9 @@
 vite-plugin-collections
 -----------------------
 
+> [!NOTE]
+> > Use [content-collections](https://www.content-collections.dev/) instead. It's way more feature packed.
+
 A Vite plugin for working with folders of markdown content.
 
 A simple solution for building blog and docs sites.
